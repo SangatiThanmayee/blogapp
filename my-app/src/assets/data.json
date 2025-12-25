@@ -1,0 +1,42 @@
+{
+    "message":"Blogs found successfully",
+    "success":true,
+    "data":[
+       {
+          "user":{
+             "id":"65546f209e7c3529a8c7caba",
+             "name":"Jivan"
+          },
+          "_id":"655727a2c7b698b0ef71a4fd",
+          "title":"Intro to JS from AIT",
+          "content":"Hello from JS from AIT",
+          "topic":"JS",
+          "createdAt":"2023-11-17T08:43:14.756Z",
+          "__v":0
+       },
+       {
+          "user":{
+             "id":"65546f209e7c3529a8c7caba",
+             "name":"Jivan"
+          },
+          "_id":"655727abc7b698b0ef71a500",
+          "title":"Intro to rust",
+          "content":"Hello from rust",
+          "topic":"rust",
+          "createdAt":"2023-11-17T08:43:23.626Z",
+          "__v":0
+       },
+       {
+          "user":{
+             "id":"65546f209e7c3529a8c7caba",
+             "name":"Jivan"
+          },
+          "_id":"65572b1948288d164bb7a82b",
+          "title":"Intro to Java",
+          "content":"Hello from Java",
+          "topic":"Java",
+          "createdAt":"2023-11-17T08:58:01.632Z",
+          "__v":0
+       }
+    ]
+ }
