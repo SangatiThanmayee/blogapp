@@ -1,0 +1,129 @@
+.Title {
+    font-size: 42px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
+    @media (max-width: 768px) {
+      margin-top: 12px;
+      font-size: 32px;
+    }
+  }
+  
+  .ContactForm {
+    width: 95%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
+    margin-top: 28px;
+    gap: 12px;
+  }
+  
+  .ContactTitle {
+    font-size: 24px;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  
+  .ContactInput {
+    flex: 1;
+    color: rgb(31, 20, 20);
+    background-color: transparent;
+    outline: none;
+    font-size: 18px;
+    border-radius: 12px;
+    border-color: rgb(86, 18, 154);
+    padding: 12px 16px;
+    &:focus {
+      border: 1px solid;
+    }
+  }
+  
+  
+  .ContactButton {
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    background: hsla(271, 100%, 50%, 1);
+    background: linear-gradient(
+      225deg,
+      hsla(271, 100%, 50%, 1) 0%,
+      hsla(294, 100%, 50%, 1) 100%
+    );
+    background: -moz-linear-gradient(
+      225deg,
+      hsla(271, 100%, 50%, 1) 0%,
+      hsla(294, 100%, 50%, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      225deg,
+      hsla(271, 100%, 50%, 1) 0%,
+      hsla(294, 100%, 50%, 1) 100%
+    );
+    padding: 13px 16px;
+    margin-top: 2px;
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .Titlt {
+    color: rgb(94, 159, 215);
+    text-align: center;
+  }
+  
+  .labl {
+    color: rgb(165, 128, 199);
+  }
+  
+  /* Add this CSS to your existing CSS file (index.css) */
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    display: none; /* Initially hidden */
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .Wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1350px;
+    padding: 0px 0px 80px 0px;
+    gap: 12px;
+    @media (max-width: 960px) {
+      flex-direction: column;
+    }
+  }
+  
+  .Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    @media (max-width: 960px) {
+      padding: 0px;
+    }
+  }
+  
