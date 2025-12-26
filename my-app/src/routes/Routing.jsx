@@ -4,6 +4,7 @@ import Home from "../components/Home/Home";
 import ContactUs from "../components/ContactUS/ContactUs";
 import CreateBlog from "../components/CreateBlog/CreateBlog";
 import Signin from "../components/Signin/Signin";
+import Register from "../components/Register/Register";
 
 
 
@@ -16,6 +17,7 @@ const Routing = () => {
         <Route path="/contactus"   element={<ContactUs/>}/>
         <Route path="/createNewBlog"  element={<CreateBlog/>}/>
         <Route path="/signin" element={<Signin/>}/>
+        <Route path="/register" element={<Register/>}/>
        
       </Routes>
     </div>
