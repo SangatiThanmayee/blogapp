@@ -1,0 +1,32 @@
+.single__blog_image {
+  margin-right: 10%;
+  margin-left: 10%;
+  width: 80%;
+  height: 80vh;
+}
+
+.single__blog_title {
+  color: white;
+  border-radius: 20px;
+  background-color: #ff9f1c;
+  font-family: "cursive";
+  font-weight: normal;
+  font-size: 3rem;
+}
+
+.single__blog_publishDate {
+  text-align: center;
+  color: black;
+  padding: 10px;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 20px;
+  background-color: #ffafcc;
+  
+}
+
+
+.blog__content {
+    font-style: italic
+    
+}
