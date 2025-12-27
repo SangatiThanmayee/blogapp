@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { useContext } from "react";
+import { Navbar, Nav, Container, } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/blog_logo.png";
 import "./header.css";
@@ -10,11 +10,15 @@ import { toast } from "react-toastify";
 const Header = () => {
     const navigate = useNavigate();
     const { user, dispatch } = useContext(AuthContext);
+    console.log(dispatch);
+    
     const logout = () => {
+             navigate("/register");
         dispatch({ type: "LOGOUT" });
         toast("Logout successfully");
         window.location.reload();
-        navigate("/");
+       
+    
     };
 
     return (

@@ -7,6 +7,7 @@ import Signin from "../components/Signin/Signin";
 import Register from "../components/Register/Register";
 import EditUserInfo from "../components/EditUserInfo/EditUserInfo";
 import AboutUs from "../components/AboutUS/AboutUs";
+import SingleBlog from "../components/SingleBlog/SingleBlog";
 
 
 
@@ -22,6 +23,7 @@ const Routing = () => {
         <Route path="/signin" element={<Signin />} />
         <Route path="/register" element={<Register />} />
         <Route path="/user/:id" element={<EditUserInfo />} />
+        <Route path="/:id" element={<SingleBlog/>} />
       </Routes>
     </div>
   );

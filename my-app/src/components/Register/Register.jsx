@@ -1,81 +1,144 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../../utils/config";
 import { toast } from "react-toastify";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
-    name: undefined,
-    email: undefined,
-    phone: undefined,
-    password: undefined,
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
   });
-  const { dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setCredentials((prev) => ({
+      ...prev,
+      [e.target.id]: e.target.value,
+    }));
   };
-  // console.log('credentials :>> ', credentials);
 
   const handleClick = async (e) => {
     e.preventDefault();
+
+    // basic validation
+    if (
+      !credentials.name ||
+      !credentials.email ||
+      !credentials.phone ||
+      !credentials.password
+    ) {
+      toast("Please fill all fields");
+      return;
+    }
+
+    if (credentials.password.length < 6) {
+      toast("Password must be at least 6 characters");
+      return;
+    }
+
+    // build payload compatible with MOST backends
+    const payload = {
+      // usual expected fields
+      name: credentials.name,
+      email: credentials.email,
+      password: credentials.password,
+
+      // often-required alternates
+      username: credentials.name,
+
+      // phone variations
+      phone: credentials.phone,
+      mobile: credentials.phone,
+      phoneNumber: credentials.phone,
+
+      // for confirm password APIs
+      confirmPassword: credentials.password,
+    };
+
     try {
-      const res = await fetch(`${BASE_URL}/auth/registerUser`, {
+      console.log("📤 Sending payload:", payload);
+
+      const res = await fetch(`https://adarshhelvarblogapp.onrender.com/api/v1/auth/registerUser/`, {
         method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(credentials),
-      }); 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
       const result = await res.json();
-      if (!result.ok) {
-        toast(result.message);
-        // console.log('result.message :>> ', result.message);
+
+      console.log("📥 STATUS:", res.status);
+      console.log("📥 BACKEND SAYS:", result);
+
+      if (!res.ok) {
+        toast(result.message || result.error || "Registration failed");
+        return;
       }
 
-      dispatch({ type: "REGISTER_SUCCESS" });
+      toast("Registration successful");
       navigate("/signin");
-    } catch (e) {
-      toast(e.message);
-      // console.log('e :>> ', e);
+    } catch (err) {
+      console.error(err);
+      toast("Network or server error");
     }
   };
 
   return (
-    <div>
-      <div className="container">
-        <form className="mt-3 form" onSubmit={handleClick}>
-          <p className="title">Create Account</p>
-          <input placeholder="Name" className="name input" type="text" id="name" onChange={handleChange}/>
-          <input placeholder="E-mail" className="name input" type="email" id="email" onChange={handleChange}/>
-          <input
-            placeholder="Phone number"
-            className="name input"
-            type="text"
-            pattern="[0-9]*"
-            id="phone"
-            onChange={handleChange}
-          />
-          <input
-            placeholder="Password"
-            className="password input"
-            type="password"
-            id="password"
-            onChange={handleChange}
-          />
-          <button className="btn" type="submit">
-            Register
-          </button>
-          <p className="mt-3 p_tag">
-            Already have an account ?{" "}
-            <Link to="/signin" className="link">
-              Signin
-            </Link>
-          </p>
-        </form>
-      </div>
+    <div className="container">
+      <form className="mt-3 form" onSubmit={handleClick}>
+        <p className="title">Create Account</p>
+
+        <input
+          id="name"
+          className="input"
+          type="text"
+          placeholder="Name"
+          value={credentials.name}
+          onChange={handleChange}
+        />
+
+        <input
+          id="email"
+          className="input"
+          type="email"
+          placeholder="Email"
+          value={credentials.email}
+          onChange={handleChange}
+        />
+
+        <input
+          id="phone"
+          className="input"
+          type="text"
+          placeholder="Phone number"
+          value={credentials.phone}
+          onChange={handleChange}
+        />
+
+        <input
+          id="password"
+          className="input"
+          type="password"
+          placeholder="Password"
+          value={credentials.password}
+          onChange={handleChange}
+        />
+
+        <button className="btn" type="submit">
+          Register
+        </button>
+
+        <p className="mt-3 p_tag">
+          Already have an account?{" "}
+          <Link to="/signin" className="link">
+            Sign in
+          </Link>
+        </p>
+      </form>
     </div>
   );
 };
