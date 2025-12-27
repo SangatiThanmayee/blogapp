@@ -10,9 +10,6 @@ import AboutUs from "../components/AboutUS/AboutUs";
 import SingleBlog from "../components/SingleBlog/SingleBlog";
 
 
-
-
-
 const Routing = () => {
   return (
     <div>
