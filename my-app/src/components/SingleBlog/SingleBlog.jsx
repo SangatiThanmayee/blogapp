@@ -33,7 +33,7 @@ const SingleBlog = () => {
           { new Date(blog.createdAt).toLocaleDateString("en-GB", {
             day: "numeric",
             month: "numeric",
-            year: "numeric",
+            year: "numeric",    
           })}
         </h6>
         <p className="container mt-3 blog__content" >{blog.content}</p>
